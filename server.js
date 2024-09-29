@@ -10,21 +10,6 @@ var port = process.env.PORT || 8080;
 var originBlacklist = parseEnvList(process.env.CORSANYWHERE_BLACKLIST);
 var originWhitelist = parseEnvList(process.env.CORSANYWHERE_WHITELIST);
 
-const url = 'https://cors-anywhere-xe4l.onrender.com/'; // Replace with your Render URL
-const interval = 300000; // Interval in milliseconds (30 seconds)
-
-function reloadWebsite() {
-  axios.get(url)
-    .then(response => {
-      console.log(`Reloaded at ${new Date().toISOString()}: Status Code ${response.status}`);
-    })
-    .catch(error => {
-      console.error(`Error reloading at ${new Date().toISOString()}:`, error.message);
-    });
-}
-
-setInterval(reloadWebsite, interval);
-
 function parseEnvList(env) {
   if (!env) {
     return [];
